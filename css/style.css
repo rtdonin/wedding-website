@@ -279,6 +279,63 @@ a:hover,
 }
 
 /* ---------------------------
+   Registry Buttons
+--------------------------- */
+.registry-buttons {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.registry-buttons p {
+  font-size: 18px;
+  color: #2E8B57; /* Emerald Green */
+  margin-bottom: 15px;
+  font-family: 'Georgia', serif;
+}
+
+.registry-btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 30px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.zola-btn {
+  background-color: #006F5F; /* Emerald Green */
+  color: #FFF;
+  border: 2px solid #FFD700; /* Gold */
+}
+
+.etsy-btn {
+  background-color: #D76A88; /* Pink */
+  color: #FFF;
+  border: 2px solid #FFD700; /* Gold */
+}
+
+.amazon-btn {
+  background-color: #FF9900; /* Amazon's Yellow */
+  color: #FFF;
+  border: 2px solid #FFD700; /* Gold */
+}
+
+.bloomingdales-btn {
+  background-color: #3E8E41; /* Deep Green, Bloomingdale's theme */
+  color: #FFF;
+  border: 2px solid #FFD700; /* Gold */
+}
+
+/* Hover Effects */
+.registry-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------------------
    Responsive / Mobile
 --------------------------- */
 @media (max-width: 768px) {
