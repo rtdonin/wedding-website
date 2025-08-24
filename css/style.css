@@ -115,11 +115,6 @@ header {
 /* ---------------------------
    Banner Section (All Subpages)
 --------------------------- */
-#page-banner-container,
-.hero-section {
-    margin-top: 2px;
-}
-
 .section-banner {
     background-size: cover;
     background-position: center;
