@@ -1,0 +1,11 @@
+a,
+.btn {
+    transition: all 0.3s ease;
+}
+
+a:hover,
+.btn:hover {
+    color: #B76E79;
+    /* pink accent */
+    text-decoration: none;
+}

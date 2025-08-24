@@ -1,0 +1,242 @@
+/* body {
+    background-color: #2B3C23;
+} */
+
+/* ---------------------------
+   Hero Section / Banner Section
+--------------------------- */
+
+.hero-image,
+.section-banner {
+    background-position: center;
+    min-height: 70vh;
+    /* same height for consistency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 0;
+    /* remove rounding to match full-width green */
+    overflow: hidden;
+}
+
+.section-banner h1,
+.hero-text h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    margin: 0;
+    text-align: center;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 1rem;
+}
+
+.hero-text h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.hero-text p {
+    margin-top: .5rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    opacity: .95;
+}
+
+/* ---------------------------
+   Header and Footer
+----------------------------*/
+header {
+    width: 100%;
+    height: 120px;
+    /* adjust height as needed */
+    background-image: url('../img/florals/header.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#footer {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    /* adjust to your footer image height */
+    background: url('../img/florals/footer.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    /* horizontal centering */
+    align-items: center;
+    /* vertical centering */
+}
+
+#footer p {
+    margin: 0;
+    color: #fff;
+    /* contrast with footer image */
+    font-size: 1rem;
+}
+
+/* ---------------------------
+   Navbar
+--------------------------- */
+.custom-navbar {
+    background-color: #155d27;
+    /* deep emerald */
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+    color: #ffffff;
+    /* white text */
+}
+
+.custom-navbar .nav-link:hover {
+    color: #d36ba6;
+    /* pink accent on hover */
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
+}
+
+/* ---------------------------
+   Banner Section (All Subpages)
+--------------------------- */
+.banner-section, .hero-section {
+    margin-top: 40px;
+    /* adjust as needed */
+}
+
+.section-banner {
+    background-size: cover;
+    background-position: center;
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.section-banner h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    margin: 0;
+    text-align: center;
+}
+
+/* ---------------------------
+   Names + Date Section
+--------------------------- */
+.names-date {
+    margin-top: 2rem;
+}
+
+.couple-names {
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+.wedding-date {
+    font-size: 1.25rem;
+    color: #B76E79;
+    /* soft pink accent */
+}
+
+/* ---------------------------
+   Main Content Sections
+--------------------------- */
+main.content,
+section.container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+main h2,
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2B3C23;
+}
+
+main p,
+main li,
+section p,
+section li {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+main ul,
+section ul {
+    list-style: none;
+    padding: 0;
+}
+
+main li,
+section li {
+    margin: .5rem 0;
+}
+
+/* ---------------------------
+   Footer
+--------------------------- */
+.site-footer {
+    background-color: #2B3C23;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
+/* ---------------------------
+   Links and Buttons
+--------------------------- */
+a,
+.btn {
+    transition: all 0.3s ease;
+}
+
+a:hover,
+.btn:hover {
+    color: #B76E79;
+    text-decoration: none;
+}
+
+/* ---------------------------
+   Responsive / Mobile
+--------------------------- */
+@media (max-width: 768px) {
+    .hero-image {
+        border-radius: 10px;
+        height: 55vh;
+        min-height: 300px;
+    }
+
+    .section-banner {
+        min-height: 200px;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+    }
+
+    .section-banner h1 {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+}
