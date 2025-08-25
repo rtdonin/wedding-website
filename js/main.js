@@ -39,4 +39,21 @@ $(function () {
 
         $("#page-banner-container").html(bannerHtml);
     });
+
+    // -------------------------------
+    // Timeline fade-in on scroll
+    // -------------------------------
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    function revealTimeline() {
+        timelineItems.forEach(item => {
+            const top = item.getBoundingClientRect().top;
+            if (top < window.innerHeight - 50) {
+                item.classList.add('in-view');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', revealTimeline);
+    window.addEventListener('load', revealTimeline);
 });

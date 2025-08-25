@@ -282,57 +282,137 @@ a:hover,
    Registry Buttons
 --------------------------- */
 .registry-buttons {
-  text-align: center;
-  margin: 20px 0;
+    text-align: center;
+    margin: 20px 0;
 }
 
 .registry-buttons p {
-  font-size: 18px;
-  color: #2E8B57; /* Emerald Green */
-  margin-bottom: 15px;
-  font-family: 'Georgia', serif;
+    font-size: 18px;
+    color: #2E8B57;
+    /* Emerald Green */
+    margin-bottom: 15px;
+    font-family: 'Georgia', serif;
 }
 
 .registry-btn {
-  display: inline-block;
-  margin: 10px;
-  padding: 12px 30px;
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 30px;
-  transition: all 0.3s ease;
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 30px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
 }
 
 .zola-btn {
-  background-color: #006F5F; /* Emerald Green */
-  color: #FFF;
-  border: 2px solid #FFD700; /* Gold */
+    background-color: #006F5F;
+    /* Emerald Green */
+    color: #FFF;
+    border: 2px solid #FFD700;
+    /* Gold */
 }
 
 .etsy-btn {
-  background-color: #D76A88; /* Pink */
-  color: #FFF;
-  border: 2px solid #FFD700; /* Gold */
+    background-color: #D76A88;
+    /* Pink */
+    color: #FFF;
+    border: 2px solid #FFD700;
+    /* Gold */
 }
 
 .amazon-btn {
-  background-color: #FF9900; /* Amazon's Yellow */
-  color: #FFF;
-  border: 2px solid #FFD700; /* Gold */
+    background-color: #FF9900;
+    /* Amazon's Yellow */
+    color: #FFF;
+    border: 2px solid #FFD700;
+    /* Gold */
 }
 
 .bloomingdales-btn {
-  background-color: #3E8E41; /* Deep Green, Bloomingdale's theme */
-  color: #FFF;
-  border: 2px solid #FFD700; /* Gold */
+    background-color: #3E8E41;
+    /* Deep Green, Bloomingdale's theme */
+    color: #FFF;
+    border: 2px solid #FFD700;
+    /* Gold */
 }
 
 /* Hover Effects */
 .registry-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------------------
+   Timeline Section
+--------------------------- */
+
+.timeline {
+    position: relative;
+    margin: 4rem 0;
+    padding: 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: #9bb088;
+    /* sage vertical line */
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    margin: 2rem 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    width: 100%;
+}
+
+.timeline-item.in-view {
+    opacity: 1;
+    transform: none;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    width: 45%;
+}
+
+.timeline-item img {
+    width: 45%;
+    border-radius: 12px;
+    object-fit: cover;
+    margin: 0 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #6d8460;
+    /* marker */
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    transform: translateX(-50%);
 }
 
 /* ---------------------------
