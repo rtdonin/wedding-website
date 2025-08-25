@@ -354,6 +354,15 @@ a:hover,
     padding: 0;
 }
 
+.timeline-card h3,
+.timeline-card .timeline-date {
+  text-align: center;
+}
+
+.timeline-card p {
+  text-align: justify;
+}
+
 .timeline::before {
     content: '';
     position: absolute;
@@ -394,11 +403,12 @@ a:hover,
     width: 45%;
 }
 
-.timeline-item img {
-    width: 45%;
-    border-radius: 12px;
-    object-fit: cover;
-    margin: 0 2rem;
+.timeline-img {
+  width: 100%;
+  max-width: 400px; /* display size */
+  height: auto;     /* keeps them square if source is square */
+  border-radius: 12px; /* optional, soft corners */
+  object-fit: cover;
 }
 
 .timeline-item::before {
