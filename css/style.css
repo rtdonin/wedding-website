@@ -1,53 +1,91 @@
-/* body {
-    background-color: #2B3C23;
-} */
+:root {
+    --gold: #d4af37;
+    --soft-pink: #B76E79;
+    --sage-green: #6d8460;
+    --deep-emerald: #2B3C23;
+    --emerald: #155d27;
+    --white: #ffffff;
+    --pink-accent: #d36ba6;
+}
 
 /* ---------------------------
    Hero Section / Banner Section
 --------------------------- */
-
 .hero-image,
-.section-banner {
+.section-banner,
+.page-banner {
     background-position: center;
+    background-size: cover;
     min-height: 70vh;
-    /* same height for consistency */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     border-radius: 0;
-    /* remove rounding to match full-width green */
     overflow: hidden;
 }
 
+.section-banner {
+    min-height: 250px;
+}
+
+.page-banner {
+    min-height: 300px;
+}
+
 .section-banner h1,
-.hero-text h1 {
-    color: #fff;
+.hero-text h1,
+.banner-text h1 {
+    color: var(--white);
     font-size: 2.5rem;
     margin: 0;
     text-align: center;
+    font-weight: bold;
 }
 
-.hero-text {
+.hero-text,
+.banner-text {
     position: relative;
-    z-index: 1;
-    color: #fff;
+    z-index: 2;
+    color: var(--white);
     text-align: center;
-    top: 50%;
-    transform: translateY(-50%);
     padding: 0 1rem;
 }
 
-.hero-text h1 {
+.hero-text {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hero-text h1,
+.banner-text h1 {
     font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: bold;
     letter-spacing: 1px;
 }
 
-.hero-text p {
-    margin-top: .5rem;
+.banner-text h1 {
+    color: #ffd700;
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.hero-text p,
+.banner-text p {
+    margin-top: 0.5rem;
     font-size: clamp(1rem, 2vw, 1.25rem);
-    opacity: .95;
+    opacity: 0.95;
+}
+
+.banner-text p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(43, 60, 35, 0.3), rgba(0, 0, 0, 0.5));
+    z-index: 1;
 }
 
 /* ---------------------------
@@ -56,7 +94,6 @@
 header {
     width: 100%;
     height: 120px;
-    /* adjust height as needed */
     background-image: url('../img/florals/header.jpg');
     background-size: cover;
     background-position: center;
@@ -67,127 +104,50 @@ header {
     position: relative;
     width: 100%;
     height: 200px;
-    /* adjust to your footer image height */
     background: url('../img/florals/footer.png') no-repeat center center;
     background-size: cover;
     display: flex;
     justify-content: center;
-    /* horizontal centering */
     align-items: center;
-    /* vertical centering */
 }
 
 #footer p {
     margin: 0;
-    color: #fff;
-    /* contrast with footer image */
+    color: var(--white);
     font-size: 1rem;
+}
+
+.site-footer {
+    background-color: var(--deep-emerald);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
 }
 
 /* ---------------------------
    Navbar
 --------------------------- */
 .custom-navbar {
-    background-color: #155d27;
-    /* deep emerald */
+    background-color: var(--emerald);
 }
 
 .custom-navbar .navbar-brand,
 .custom-navbar .nav-link {
-    color: #ffffff;
-    /* white text */
+    color: var(--white);
 }
 
 .custom-navbar .nav-link:hover {
-    color: #d36ba6;
-    /* pink accent on hover */
+    color: var(--pink-accent);
 }
 
 .navbar-toggler {
     border-color: pink !important;
-    /* optional: pink border */
 }
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='pink' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
-}
-
-/* ---------------------------
-   Banner Section (All Subpages)
---------------------------- */
-.section-banner {
-    background-size: cover;
-    background-position: center;
-    min-height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.section-banner h1 {
-    color: #fff;
-    font-size: 2.5rem;
-    margin: 0;
-    text-align: center;
-}
-
-.page-banner {
-    position: relative;
-    width: 100%;
-    min-height: 300px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.banner-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(43, 60, 35, 0.3), rgba(0, 0, 0, 0.5));
-    z-index: 1;
-}
-
-.banner-text {
-    position: relative;
-    z-index: 2;
-    color: #ffd700;
-    text-align: center;
-}
-
-.banner-text h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: bold;
-    margin: 0;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-}
-
-.banner-text p {
-    margin-top: 0.5rem;
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-}
-
-/* ---------------------------
-   Names + Date Section
---------------------------- */
-.names-date {
-    margin-top: 2rem;
-}
-
-.couple-names {
-    font-family: 'Georgia', serif;
-    font-size: 2.5rem;
-    color: #2B3C23;
-    ;
-}
-
-.wedding-date {
-    font-size: 1.25rem;
-    color: #B76E79;
-    /* soft pink accent */
 }
 
 /* ---------------------------
@@ -205,7 +165,7 @@ main h2,
 section h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #2B3C23;
+    color: var(--deep-emerald);
 }
 
 main p,
@@ -224,7 +184,25 @@ section ul {
 
 main li,
 section li {
-    margin: .5rem 0;
+    margin: 0.5rem 0;
+}
+
+/* ---------------------------
+   Names + Date Section
+--------------------------- */
+.names-date {
+    margin-top: 2rem;
+}
+
+.couple-names {
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    color: var(--deep-emerald);
+}
+
+.wedding-date {
+    font-size: 1.25rem;
+    color: var(--soft-pink);
 }
 
 /* ---------------------------
@@ -244,38 +222,10 @@ section li {
 .schedule .time {
     font-weight: bold;
     color: #2c2c2c;
-    /* neutral default */
 }
 
 .schedule .highlight {
-    color: #d4af37;
-    /* classic gold */
-}
-
-/* ---------------------------
-   Footer
---------------------------- */
-.site-footer {
-    background-color: #2B3C23;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 3rem;
-    font-size: 0.9rem;
-}
-
-/* ---------------------------
-   Links and Buttons
---------------------------- */
-a,
-.btn {
-    transition: all 0.3s ease;
-}
-
-a:hover,
-.btn:hover {
-    color: #B76E79;
-    text-decoration: none;
+    color: var(--gold);
 }
 
 /* ---------------------------
@@ -289,7 +239,6 @@ a:hover,
 .registry-buttons p {
     font-size: 18px;
     color: #2E8B57;
-    /* Emerald Green */
     margin-bottom: 15px;
     font-family: 'Georgia', serif;
 }
@@ -304,63 +253,40 @@ a:hover,
     text-decoration: none;
     border-radius: 30px;
     transition: all 0.3s ease;
+    color: var(--white);
+    border: 2px solid #FFD700;
 }
 
 .zola-btn {
     background-color: #006F5F;
-    /* Emerald Green */
-    color: #FFF;
-    border: 2px solid #FFD700;
-    /* Gold */
 }
 
 .etsy-btn {
     background-color: #D76A88;
-    /* Pink */
-    color: #FFF;
-    border: 2px solid #FFD700;
-    /* Gold */
 }
 
 .amazon-btn {
     background-color: #FF9900;
-    /* Amazon's Yellow */
-    color: #FFF;
-    border: 2px solid #FFD700;
-    /* Gold */
 }
 
 .bloomingdales-btn {
     background-color: #3E8E41;
-    /* Deep Green, Bloomingdale's theme */
-    color: #FFF;
-    border: 2px solid #FFD700;
-    /* Gold */
 }
 
-/* Hover Effects */
 .registry-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: var(--white);
+    text-decoration: none;
 }
 
 /* ---------------------------
    Timeline Section
 --------------------------- */
-
 .timeline {
     position: relative;
     margin: 4rem 0;
     padding: 0;
-}
-
-.timeline-card h3,
-.timeline-card .timeline-date {
-  text-align: center;
-}
-
-.timeline-card p {
-  text-align: justify;
 }
 
 .timeline::before {
@@ -371,15 +297,14 @@ a:hover,
     left: 50%;
     width: 3px;
     background: #9bb088;
-    /* sage vertical line */
     transform: translateX(-50%);
 }
 
 .timeline-item {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     position: relative;
-    margin: 2rem 0;
+    margin: 3rem 0;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.6s ease, transform 0.6s ease;
@@ -391,24 +316,15 @@ a:hover,
     transform: none;
 }
 
+.timeline-item img,
+.timeline-card img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
 .timeline-item:nth-child(even) {
     flex-direction: row-reverse;
-}
-
-.timeline-card {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 1rem 1.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    width: 45%;
-}
-
-.timeline-img {
-  width: 100%;
-  max-width: 400px; /* display size */
-  height: auto;     /* keeps them square if source is square */
-  border-radius: 12px; /* optional, soft corners */
-  object-fit: cover;
 }
 
 .timeline-item::before {
@@ -418,11 +334,56 @@ a:hover,
     left: 50%;
     width: 20px;
     height: 20px;
-    background-color: #6d8460;
-    /* marker */
+    background-color: var(--sage-green);
     border-radius: 50%;
-    border: 3px solid #ffffff;
+    border: 3px solid var(--white);
     transform: translateX(-50%);
+}
+
+.timeline-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    width: 45%;
+}
+
+.timeline-card h3,
+.timeline-card .timeline-date {
+    text-align: center;
+}
+
+.timeline-card p {
+    text-align: justify;
+}
+
+.timeline-img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
+}
+
+.timeline-date {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* ---------------------------
+   Links and Buttons
+--------------------------- */
+a,
+.btn {
+    transition: all 0.3s ease;
+}
+
+a:hover,
+.btn:hover {
+    color: var(--soft-pink);
+    text-decoration: none;
 }
 
 /* ---------------------------

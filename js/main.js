@@ -15,7 +15,7 @@ $(function () {
         $('#footer').replaceWith(data); // replaces #footer div with footer.html content
     });
 
-    // Navbar replacement remains the same
+    // Navbar replacement
     $('#navbar').load('partials/navbar.html', function () {
         var bsCollapse = new bootstrap.Collapse(document.querySelectorAll('.collapse'), {
             toggle: false
