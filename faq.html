@@ -10,6 +10,155 @@
     <link href="css/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/main.js" defer></script>
+
+    <style>
+        /* ---------------------------
+            Typography
+        --------------------------- */
+        /* H3s with sage green backgrounds and left borders */
+        h3 {
+            background: linear-gradient(135deg, rgba(109, 132, 96, 0.1) 0%, rgba(109, 132, 96, 0.05) 100%);
+            border-left: 4px solid var(--sage-green);
+            padding: 12px 20px;
+            margin: 2rem 0 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+
+        /* H4s with pink dotted underlines */
+        h4 {
+            position: relative;
+            padding-bottom: 8px;
+            margin-bottom: 1rem;
+        }
+
+        h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: repeating-linear-gradient(90deg,
+                    var(--soft-pink) 0px,
+                    var(--soft-pink) 4px,
+                    transparent 4px,
+                    transparent 8px);
+            border-radius: 2px;
+        }
+
+        /* ---------------------------
+            Special Highlight Boxes
+        --------------------------- */
+
+        /* Kabbalat Panim - Pink highlight box */
+        .kabbalat-panim-highlight {
+            background: linear-gradient(135deg,
+                    rgba(183, 110, 121, 0.1) 0%,
+                    rgba(183, 110, 121, 0.05) 50%,
+                    rgba(183, 110, 121, 0.1) 100%);
+            border: 2px solid var(--soft-pink);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 2rem 0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(183, 110, 121, 0.2);
+        }
+
+        /* Tisch - Green highlight box */
+        .tisch-highlight {
+            background: linear-gradient(135deg,
+                    rgba(109, 132, 96, 0.1) 0%,
+                    rgba(109, 132, 96, 0.05) 50%,
+                    rgba(109, 132, 96, 0.1) 100%);
+            border: 2px solid var(--sage-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 2rem 0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(109, 132, 96, 0.2);
+        }
+
+        /* Special "Mazel Tov" callout box */
+        .mazel-tov {
+            background: linear-gradient(45deg,
+                    var(--gold) 0%,
+                    var(--soft-pink) 50%,
+                    var(--gold) 100%);
+            color: white;
+            padding: 20px;
+            margin: 2rem 0;
+            border-radius: 15px;
+            transform: rotate(-1deg);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .mazel-tov::before {
+            content: '🎉';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        .mazel-tov::after {
+            content: '🎉';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 2rem;
+            animation: bounce 2s infinite 0.5s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* ---------------------------
+            Enhanced Dress Code Section
+        --------------------------- */
+        #dress-code {
+            background: linear-gradient(135deg,
+                    rgba(183, 110, 121, 0.1) 0%,
+                    rgba(183, 110, 121, 0.05) 100%);
+            border: 3px solid var(--soft-pink);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 3rem 0;
+            position: relative;
+            box-shadow: 0 6px 20px rgba(183, 110, 121, 0.2);
+        }
+
+
+
+        #dress-code+p {
+            background: rgba(183, 110, 121, 0.05);
+            border-left: 4px solid var(--soft-pink);
+            padding: 15px 20px;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -187,10 +336,13 @@
         <h3 class="text-center" id="dress-code">Showing Respect Through Attire</h3>
         <p>Attire at our wedding is Black Tie Optional.</p>
         <p>Men are encouraged to wear tuxedos, or else a suit and tie.</p>
+        <p>For women, it is a religious event in an Orthodox context, so modest attire is requested.</p>
+        <p>By special request of the bride, please leave your tiaras and jumpsuits at home.</p>
+        <!-- Leaving this in here to see if Matthew ever checks the repo ;)
         <p>Women should wear an outfit they feel beautiful in. The outfit should have a high neckline that also covers
             the knees when sitting. Sheer, sleeveless, backless, low-cut, high slit, and midriff-bearing attire are
             considered inappropriate for this event.</p>
-        <p>By special request of the bride, please leave your tiaras, jumpsuits, and pant suits at home.</p>
+        <p>By special request of the bride, please leave your tiaras, jumpsuits, and pant suits at home.</p> -->
 
         <h3 class="text-center">Head Coverings</h3>
         <p>It is customary and respectful for men to wear kippot (AKA yarmulkes, skullcaps, "little hats", yamakas,
