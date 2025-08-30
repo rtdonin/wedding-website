@@ -399,6 +399,59 @@ h2::after {
 }
 
 /* ---------------------------
+   Big Timeline Cards
+--------------------------- */
+.timeline-big-card {
+    flex-direction: column !important;
+    align-items: center;
+    margin: 4rem 0;
+}
+
+.timeline-big-card::before {
+    top: -15px;
+    width: 25px;
+    height: 25px;
+    background-color: var(--gold);
+}
+
+.timeline-big-content {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 85%;
+    max-width: 800px;
+    text-align: center;
+    border: 3px solid var(--sage-green);
+}
+
+.timeline-big-img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-top: 1rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-big-content .timeline-date {
+    font-size: 1.1rem;
+    color: var(--soft-pink);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-big-content h3 {
+    font-size: 1.8rem;
+    color: var(--deep-emerald);
+    margin-bottom: 1rem;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* ---------------------------
    Links and Buttons
 --------------------------- */
 a,
@@ -442,32 +495,42 @@ a:hover,
         display: none;
     }
 
-    @media (max-width: 768px) {
-        .timeline::before {
-            left: 30px;
-        }
+    .timeline::before {
+        left: 30px;
+    }
 
-        .timeline-item {
-            flex-direction: column !important;
-            align-items: flex-start;
-            margin-left: 60px;
-        }
+    .timeline-item {
+        flex-direction: column !important;
+        align-items: flex-start;
+        margin-left: 60px;
+    }
 
-        .timeline-item::before {
-            left: 30px;
-        }
+    .timeline-item::before {
+        left: 30px;
+    }
 
-        .timeline-card {
-            width: 100%;
-            overflow: hidden;
-        }
+    .timeline-card {
+        width: 100%;
+        overflow: hidden;
+    }
 
-        .timeline-img {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
+    .timeline-img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
 
+    .timeline-big-card {
+        margin-left: 60px;
+    }
+
+    .timeline-big-content {
+        width: calc(100% - 20px);
+        padding: 1.5rem;
+    }
+
+    .timeline-big-content h3 {
+        font-size: 1.5rem;
     }
 }
