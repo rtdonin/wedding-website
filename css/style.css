@@ -9,13 +9,29 @@
 }
 
 /* ---------------------------
-   Hero Section / Banner Section
+   Base Elements & Transitions
+--------------------------- */
+a, .btn {
+    transition: all 0.3s ease;
+}
+
+a {
+    color: var(--sage-green);
+    text-decoration: none;
+}
+
+a:hover, .btn:hover {
+    color: var(--soft-pink);
+    text-decoration: none;
+}
+
+/* ---------------------------
+   Hero/Banner Sections
 --------------------------- */
 .hero-image,
 .section-banner,
 .page-banner {
-    background-position: center;
-    background-size: cover;
+    background: center/cover;
     min-height: 70vh;
     display: flex;
     justify-content: center;
@@ -33,16 +49,6 @@
     min-height: 300px;
 }
 
-.section-banner h1,
-.hero-text h1,
-.banner-text h1 {
-    color: var(--white);
-    font-size: 2.5rem;
-    margin: 0;
-    text-align: center;
-    font-weight: bold;
-}
-
 .hero-text,
 .banner-text {
     position: relative;
@@ -57,9 +63,14 @@
     transform: translateY(-50%);
 }
 
+.section-banner h1,
 .hero-text h1,
 .banner-text h1 {
+    color: var(--white);
     font-size: clamp(2rem, 4vw, 3.5rem);
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
     letter-spacing: 1px;
 }
 
@@ -94,18 +105,14 @@
 header {
     width: 100%;
     height: 120px;
-    background-image: url('../img/florals/header.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url('../img/florals/header.jpg') center/cover no-repeat;
 }
 
 #footer {
     position: relative;
     width: 100%;
     height: 200px;
-    background: url('../img/florals/footer.png') no-repeat center center;
-    background-size: cover;
+    background: url('../img/florals/footer.png') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -151,7 +158,7 @@ header {
 }
 
 /* ---------------------------
-   Main Content Sections
+   Main Content Sections & Typography
 --------------------------- */
 main.content,
 section.container {
@@ -162,10 +169,26 @@ section.container {
 }
 
 main h2,
-section h2 {
+section h2,
+h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--deep-emerald);
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 2rem;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--gold) 80%, transparent 100%);
+    border-radius: 2px;
 }
 
 main p,
@@ -187,42 +210,15 @@ section li {
     margin: 0.5rem 0;
 }
 
-/* ---------------------------
-   Enhanced Typography
---------------------------- */
-
-/* First paragraphs - larger and darker for emphasis */
-.wedding-guide>p:first-of-type,
-.wedding-guide>p:nth-of-type(2),
-.wedding-guide>p:nth-of-type(3) {
+/* Enhanced first paragraphs */
+.wedding-guide > p:first-of-type,
+.wedding-guide > p:nth-of-type(2),
+.wedding-guide > p:nth-of-type(3) {
     font-size: 1.25rem;
     font-weight: 500;
     color: var(--deep-emerald);
     line-height: 1.6;
     margin-bottom: 1.5rem;
-}
-
-/* ---------------------------
-   Colored Headers
---------------------------- */
-
-/* H2s with gold underlines and pink decorative symbols */
-h2 {
-    position: relative;
-    padding-bottom: 15px;
-    margin-bottom: 2rem;
-}
-
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--gold) 80%, transparent 100%);
-    border-radius: 2px;
 }
 
 /* ---------------------------
@@ -342,13 +338,6 @@ h2::after {
     transform: none;
 }
 
-.timeline-item img,
-.timeline-card img {
-    max-width: 100%;
-    height: auto;
-    box-sizing: border-box;
-}
-
 .timeline-item:nth-child(even) {
     flex-direction: row-reverse;
 }
@@ -366,12 +355,16 @@ h2::after {
     transform: translateX(-50%);
 }
 
+/* Timeline Cards & Images */
 .timeline-card {
     background: var(--white);
     border-radius: 12px;
     padding: 1rem 1.5rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .timeline-card h3,
@@ -380,17 +373,24 @@ h2::after {
 }
 
 .timeline-card p {
-    text-align: justify;
+    text-align: left;
+}
+
+.timeline-item img,
+.timeline-card img,
+.timeline-img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
 }
 
 .timeline-img {
     width: 100%;
     max-width: 350px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 12px;
-    display: block;
-    margin: 0 auto;
 }
 
 .timeline-date {
@@ -398,9 +398,7 @@ h2::after {
     margin-bottom: 0.5rem;
 }
 
-/* ---------------------------
-   Big Timeline Cards
---------------------------- */
+/* Big Timeline Cards */
 .timeline-big-card {
     flex-direction: column !important;
     align-items: center;
@@ -452,21 +450,7 @@ h2::after {
 }
 
 /* ---------------------------
-   Links and Buttons
---------------------------- */
-a,
-.btn {
-    transition: all 0.3s ease;
-}
-
-a:hover,
-.btn:hover {
-    color: var(--soft-pink);
-    text-decoration: none;
-}
-
-/* ---------------------------
-   Responsive / Mobile
+   Mobile Responsive
 --------------------------- */
 @media (max-width: 768px) {
     .hero-image {
@@ -517,8 +501,6 @@ a:hover,
     .timeline-img {
         width: 100%;
         max-width: 100%;
-        height: auto;
-        object-fit: cover;
     }
 
     .timeline-big-card {
