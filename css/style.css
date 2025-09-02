@@ -390,7 +390,7 @@ section li {
 
 .timeline-img {
     width: 100%;
-    max-width: 350px;
+    max-width: 200px;
 }
 
 .timeline-date {
@@ -425,7 +425,7 @@ section li {
 
 .timeline-big-img {
     width: 100%;
-    max-width: 600px;
+    max-width: 400px;
     height: auto;
     object-fit: cover;
     border-radius: 15px;
