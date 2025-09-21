@@ -1,0 +1,44 @@
+<!-- Photo labeling form (appears after photos are selected) -->
+<div class="photo-form-container" id="photo-form-container">
+    <h3>Label Your Photos</h3>
+    <p>Please tell us which scavenger hunt task your photo completes or select "Just Because."</p>
+    
+    <!-- Single name field for all photos -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <label for="guest-name-all" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="guest-name-all" 
+                   placeholder="Enter your full name" required>
+        </div>
+    </div>
+    
+    <div id="photo-forms">
+        <!-- Individual photo forms will be inserted here -->
+    </div>
+    
+    <div class="text-center mt-4">
+        <button type="button" class="submit-all-btn" id="submit-all-photos">
+            Submit All Photos
+        </button>
+    </div>
+</div>
+
+<!-- Final Confirmation Modal -->
+<div class="modal fade" id="finalConfirmationModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Photo Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>All photos will be public and displayed in our wedding gallery where other guests can view and potentially download them.</strong></p>
+                <p>Are you ready to submit your photos?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirm-submission">Submit Photos</button>
+            </div>
+        </div>
+    </div>
+</div>

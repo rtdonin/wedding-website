@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-title="PhotoScavenger Hunt" data-subtitle="Pics or it didn't happen"
+    data-bg="img/placeholders/photos.jpg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Photos - M&M Wedding</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body data-title="Share Your Photos" data-subtitle="Help us capture every moment of our special day">
+    <div id="header"></div>
+    <div id="navbar"></div>
+    <div id="page-banner-container"></div>
+
+    <section class="container my-5">
+        <div class="instructions">
+            <h3>Share Your Wedding Photos</h3>
+            <p>We'd love to see the wedding through your eyes!<br />Upload your favorite photos from our special day.</p>
+            <ul class="text-start">
+                <li>Photos should be from our wedding day</li>
+                <li>Please only upload appropriate, family-friendly images.</li>
+                <li>Maximum file size: 10MB per photo</li>
+                <li>Accepted formats: JPG, PNG, HEIC</li>
+            </ul>
+        </div>
+
+        <div class="upload-section">
+            <h2>Upload Your Photos</h2>
+            <p>Click the button below to select and upload your photos</p>
+
+            <button id="upload-widget-btn" class="upload-btn">
+                Choose Photos to Upload
+            </button>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Uploading your photos...</p>
+            </div>
+
+            <!-- Photo form partial will be loaded here -->
+            <div id="photo-form-placeholder"></div>
+
+            <div class="success-message" id="success-message">
+                <h4>Thank you!</h4>
+                <p>Your photos have been uploaded successfully. We'll review them and add them to our gallery soon!</p>
+            </div>
+        </div>
+
+        <div class="recently-uploaded" id="recent-uploads">
+            <!-- Recently uploaded photos will appear here -->
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/photos.js"></script>
+</body>
+
+</html>
