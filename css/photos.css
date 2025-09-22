@@ -1,0 +1,436 @@
+/* ========================================
+   PHOTOS.CSS - Wedding Photo Upload & Gallery Styles
+   ======================================== */
+
+/* ---------------------------
+   Upload Section
+--------------------------- */
+.upload-section {
+    background: linear-gradient(135deg,
+            rgba(109, 132, 96, 0.05) 0%,
+            rgba(183, 110, 121, 0.05) 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 2rem 0;
+    text-align: center;
+    border: 2px dashed var(--sage-green);
+}
+
+.upload-btn {
+    background: linear-gradient(45deg, var(--sage-green), var(--soft-pink));
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 1rem;
+}
+
+.upload-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.upload-btn:disabled {
+    background: #ccc !important;
+    transform: none !important;
+    box-shadow: none !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.upload-btn:disabled:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    color: white;
+}
+
+/* ---------------------------
+   Photo Form
+--------------------------- */
+.photo-form-container {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.photo-form-container h3 {
+    color: var(--deep-emerald);
+    margin-bottom: 1rem;
+}
+
+.photo-form-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #dee2e6;
+    transition: box-shadow 0.3s ease;
+}
+
+.photo-form-item:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Thumbnail Preview */
+.photo-preview-thumb {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: #f0f0f0;
+}
+
+.photo-preview-thumb img {
+    display: block;
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.photo-preview-thumb:hover img {
+    transform: scale(1.05);
+}
+
+.submit-all-btn {
+    background: linear-gradient(45deg, var(--sage-green), var(--soft-pink));
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-all-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------------------------
+   Photo Gallery
+--------------------------- */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.photo-item {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.photo-info {
+    padding: 10px;
+    background: white;
+}
+
+.photo-info h6 {
+    margin: 0;
+    color: var(--deep-emerald);
+    font-size: 0.9rem;
+}
+
+/* Zoom Icon Overlay */
+.photo-item::after {
+    content: '🔍';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.photo-item:hover::after {
+    opacity: 1;
+}
+
+.photo-uploader-hover {
+    margin: 5px 0 0 0;
+    font-size: 0.85rem;
+    color: var(--sage-green);
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    height: 20px;
+    /* Reserve space so layout doesn't shift */
+}
+
+.photo-item:hover .photo-uploader-hover {
+    opacity: 0.8;
+}
+
+/* Optional: Make the entire info area transition smoothly */
+.photo-info {
+    padding: 10px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.photo-item:hover .photo-info {
+    background: linear-gradient(to bottom, white 0%, #f8f9fa 100%);
+}
+
+/* ---------------------------
+   Instructions Box
+--------------------------- */
+.instructions {
+    background: var(--white);
+    border-left: 4px solid var(--gold);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 12px 12px 0;
+    text-align: left;
+}
+
+.instructions h3 {
+    color: var(--deep-emerald);
+    margin-bottom: 1rem;
+}
+
+.instructions ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.instructions li {
+    text-align: left;
+    margin: 0.5rem 0;
+}
+
+/* ---------------------------
+   Messages & Loading
+--------------------------- */
+.success-message {
+    background: linear-gradient(135deg,
+            rgba(109, 132, 96, 0.1) 0%,
+            rgba(109, 132, 96, 0.05) 100%);
+    border: 2px solid var(--sage-green);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1rem 0;
+    display: none;
+    color: var(--deep-emerald);
+}
+
+.success-message h4 {
+    color: var(--sage-green);
+    margin-bottom: 0.5rem;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--sage-green);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.recently-uploaded h3 {
+    color: var(--deep-emerald);
+    margin: 2rem 0 1rem 0;
+}
+
+/* ---------------------------
+   Lightbox Modal
+--------------------------- */
+.photo-lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.95);
+    animation: fadeIn 0.2s;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.3s;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: normal;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 10000;
+    line-height: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    color: #fff;
+    background-color: rgba(183, 110, 121, 0.8);
+    transform: scale(1.1);
+}
+
+.lightbox-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: auto;
+    font-size: 1.1rem;
+    margin-top: 20px;
+}
+
+/* Lightbox Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ---------------------------
+   Mobile Responsive
+--------------------------- */
+@media (max-width: 768px) {
+    .upload-section {
+        padding: 2rem 1rem;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .upload-btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    .instructions {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    .photo-preview-thumb img {
+        height: 60px;
+    }
+
+    .photo-form-item {
+        padding: 10px;
+    }
+
+    .photo-form-container {
+        padding: 1rem;
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        font-size: 35px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 70vh;
+        margin-top: 50px;
+    }
+
+    .lightbox-caption {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .photo-item::after {
+        display: none;
+        /* Hide zoom icon on mobile */
+    }
+}

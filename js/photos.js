@@ -2,8 +2,6 @@ $(function () {
     // -------------------------------
     // Photo Upload Configuration
     // -------------------------------
-
-    // Replace these with your actual Cloudinary settings
     const CLOUDINARY_CONFIG = {
         cloudName: 'dqsxgzr9g',
         uploadPreset: 'wedding-uploads'
@@ -44,6 +42,9 @@ $(function () {
 
         // Load existing public photos
         loadPublicPhotoGallery();
+
+        // Initialize lightbox
+        initializeLightbox();
     }
 
     // -------------------------------
@@ -82,19 +83,19 @@ $(function () {
             autoMinimize: false,
             styles: {
                 palette: {
-                    window: "#FFFFFF",
-                    windowBorder: "#90A0B3",
-                    tabIcon: "#6d8460",
-                    menuIcons: "#5A616A",
-                    textDark: "#000000",
-                    textLight: "#FFFFFF",
-                    link: "#B76E79",
-                    action: "#6d8460",
-                    inactiveTabIcon: "#90A0B3",
-                    error: "#F44235",
-                    inProgress: "#0078FF",
-                    complete: "#20B832",
-                    sourceBg: "#E4EBF1"
+                    window: "#ffffff",              // var(--white)
+                    windowBorder: "#6d8460",        // var(--sage-green)
+                    tabIcon: "#6d8460",             // var(--sage-green)
+                    menuIcons: "#2B3C23",           // var(--deep-emerald)
+                    textDark: "#2B3C23",            // var(--deep-emerald)
+                    textLight: "#ffffff",           // var(--white)
+                    link: "#B76E79",                // var(--soft-pink)
+                    action: "#6d8460",              // var(--sage-green)
+                    inactiveTabIcon: "#B76E79",     // var(--soft-pink)
+                    error: "#F44235",               // Keep error red as is
+                    inProgress: "#d4af37",          // var(--gold)
+                    complete: "#6d8460",            // var(--sage-green)
+                    sourceBg: "#f8f9fa"            // Light gray to match form backgrounds
                 }
             }
         }, handleUploadResult);
@@ -110,25 +111,17 @@ $(function () {
     // Event Listeners
     // -------------------------------
     function bindPhotoEventListeners() {
-        // Submit all photos (bound after partial loads)
+        // Submit all photos
         $(document).on('click', '#submit-all-photos', handlePhotoSubmission);
 
-        // Show/hide public warning when checkboxes change
-        $(document).on('change', '.photo-public', togglePublicWarning);
-    }
+        // Modal confirmation
+        $(document).on('click', '#confirm-submission', function () {
+            const photoData = $('#finalConfirmationModal').data('photoData');
 
-    // -------------------------------
-    // Public Warning Toggle
-    // -------------------------------
-    function togglePublicWarning() {
-        const $publicWarning = $('#public-warning');
-        const hasPublicPhotos = $('.photo-public:checked').length > 0;
-
-        if (hasPublicPhotos) {
-            $publicWarning.show();
-        } else {
-            $publicWarning.hide();
-        }
+            $('#finalConfirmationModal').modal('hide');
+            showLoading();
+            processPhotoSubmissions(photoData);
+        });
     }
 
     // -------------------------------
@@ -156,50 +149,6 @@ $(function () {
     }
 
     // -------------------------------
-    // Photo Form Generation
-    // -------------------------------
-    function generatePhotoFormHtml(photo, index) {
-        const taskOptions = SCAVENGER_HUNT_TASKS.map(task =>
-            `<option value="${task}">${task}</option>`
-        ).join('');
-
-        return `
-            <div class="photo-form-item" data-photo-index="${index}">
-                <div class="photo-preview">
-                    <img src="${photo.secure_url}" alt="Selected photo ${index + 1}">
-                </div>
-                <div class="photo-details">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="guest-name-${index}" class="form-label">Your Name</label>
-                            <input type="text" class="form-control guest-name" id="guest-name-${index}" 
-                                   placeholder="Enter your full name" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="task-${index}" class="form-label">Scavenger Hunt Task</label>
-                            <select class="form-select photo-task" id="task-${index}" required>
-                                <option value="">Choose a task...</option>
-                                ${taskOptions}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input photo-public" type="checkbox" 
-                                       id="public-${index}" checked>
-                                <label class="form-check-label" for="public-${index}">
-                                    Make this photo public (it will appear in the wedding gallery)
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    // -------------------------------
     // Photo Labeling Form
     // -------------------------------
     function showPhotoLabelingForm() {
@@ -211,17 +160,37 @@ $(function () {
         // Clear previous forms
         $formsContainer.empty();
 
-        // Create a form for each selected photo using the helper function
+        // Hide upload button while form is shown
+        $('#upload-widget-btn').hide();
+
+        // Create a form for each selected photo (WITHOUT individual name fields)
         selectedPhotos.forEach((photo, index) => {
-            const formHtml = generatePhotoFormHtml(photo, index);
+            const formHtml = `
+                <div class="photo-form-item" data-photo-index="${index}">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 col-4">
+                            <div class="photo-preview-thumb">
+                                <img src="${photo.secure_url}" alt="Selected photo ${index + 1}" 
+                                     style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px;">
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-8">
+                            <label for="task-${index}" class="form-label">Photo ${index + 1} - Scavenger Hunt Task</label>
+                            <select class="form-select photo-task" id="task-${index}" required>
+                                <option value="">Choose a task...</option>
+                                ${SCAVENGER_HUNT_TASKS.map(task =>
+                `<option value="${task}">${task}</option>`
+            ).join('')}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `;
             $formsContainer.append(formHtml);
         });
 
         // Show the form container
         $container.show();
-
-        // Check initial warning state (photos default to public)
-        togglePublicWarning();
 
         // Scroll to the form
         $container[0].scrollIntoView({ behavior: 'smooth' });
@@ -234,45 +203,51 @@ $(function () {
         const photoData = [];
         let allValid = true;
 
+        // Get the single name field value (plain text, no sanitization)
+        const guestNameAll = $('#guest-name-all').val().trim();
+
+        if (!guestNameAll) {
+            alert('Please enter your name.');
+            return;
+        }
+
         $('.photo-form-item').each(function (index) {
             const $form = $(this);
-            const guestName = $form.find('.guest-name').val().trim();
             const task = $form.find('.photo-task').val();
-            const isPublic = $form.find('.photo-public').is(':checked');
 
-            if (!guestName || !task) {
+            if (!task) {
                 allValid = false;
                 return false; // Break out of each loop
             }
 
             photoData.push({
                 ...selectedPhotos[index],
-                guestName: guestName,
-                scavengerTask: task,
-                isPublic: isPublic,
+                guestName: guestNameAll, // Store as plain text
+                scavengerTask: task, // Store as plain text
+                isPublic: true, // All photos are public now
                 uploadedAt: new Date().toISOString()
             });
         });
 
         if (!allValid) {
-            alert('Please fill in all required fields for each photo.');
+            alert('Please select a scavenger hunt task for each photo.');
             return;
         }
 
-        showLoading();
-        processPhotoSubmissions(photoData);
+        // Show confirmation modal
+        $('#finalConfirmationModal').modal('show');
+
+        // Store photo data temporarily for when user confirms
+        $('#finalConfirmationModal').data('photoData', photoData);
     }
 
     // -------------------------------
     // Photo Processing
     // -------------------------------
     function processPhotoSubmissions(photoData) {
-        // Here you would typically send the data to your backend
-        // For now, we'll simulate processing and store locally
-
         console.log('Processing photo submissions:', photoData);
 
-        // Store submissions (you might want to send to a backend instead)
+        // Store submissions
         const existingPhotos = JSON.parse(localStorage.getItem('weddingPhotos') || '[]');
         const allPhotos = [...existingPhotos, ...photoData];
         localStorage.setItem('weddingPhotos', JSON.stringify(allPhotos));
@@ -281,12 +256,17 @@ $(function () {
         hideLoading();
         $('#photo-form-container').hide();
 
+        // Show upload button again
+        $('#upload-widget-btn').show();
+
         // Show success message
         $('#success-message').show();
 
-        // Add public photos to gallery
-        const publicPhotos = photoData.filter(p => p.isPublic);
-        publicPhotos.forEach(photo => addPhotoToGallery(photo));
+        // Add photos to gallery
+        photoData.forEach(photo => addPhotoToGallery(photo));
+
+        // Reset selected photos
+        selectedPhotos = [];
 
         // Hide success message after 5 seconds
         setTimeout(() => {
@@ -317,20 +297,92 @@ $(function () {
             $recentUploads.append($gallery);
         }
 
-        // Create photo item
-        const photoHtml = `
-            <div class="photo-item">
-                <img src="${photoInfo.secure_url}" alt="${photoInfo.scavengerTask}" loading="lazy">
-                <div class="photo-info">
-                    <h6>${photoInfo.scavengerTask}</h6>
-                    <p>by ${photoInfo.guestName}</p>
-                </div>
-            </div>
-        `;
+        // Create the photo item container
+        const $photoItem = $('<div class="photo-item"></div>');
+        $photoItem.attr('data-full-image', photoInfo.secure_url);
+        $photoItem.attr('data-caption', photoInfo.scavengerTask);
 
-        // Add to beginning of gallery
-        $gallery.prepend(photoHtml);
+        // Add the image
+        const $img = $('<img>');
+        $img.attr('src', photoInfo.secure_url);
+        $img.attr('alt', photoInfo.scavengerTask);
+        $img.attr('loading', 'lazy');
+
+        // Create the info section
+        const $photoInfo = $('<div class="photo-info"></div>');
+
+        // Add task name as plain text
+        const $taskName = $('<h6></h6>');
+        $taskName.text(photoInfo.scavengerTask); // .text() ensures it's treated as plain text
+
+        // Add uploader name as plain text (hover-only)
+        const $uploaderName = $('<p class="photo-uploader-hover"></p>');
+        $uploaderName.text('by ' + photoInfo.guestName); // .text() ensures it's treated as plain text
+
+        // Assemble the elements
+        $photoInfo.append($taskName);
+        $photoInfo.append($uploaderName);
+        $photoItem.append($img);
+        $photoItem.append($photoInfo);
+
+        // Add to gallery
+        $gallery.prepend($photoItem);
     }
+
+    // -------------------------------
+    // Lightbox Functionality
+    // -------------------------------
+    function initializeLightbox() {
+        // Create lightbox HTML if it doesn't exist
+        if ($('#photo-lightbox').length === 0) {
+            const lightboxHtml = `
+                <div id="photo-lightbox" class="photo-lightbox">
+                    <span class="lightbox-close">&times;</span>
+                    <img class="lightbox-content" id="lightbox-img">
+                    <div class="lightbox-caption"></div>
+                </div>
+            `;
+            $('body').append(lightboxHtml);
+        }
+
+        // Bind close events
+        $('.lightbox-close').on('click', closeLightbox);
+        $('#photo-lightbox').on('click', function (e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // ESC key to close
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    }
+
+    function openLightbox(imageSrc, caption) {
+        const $lightbox = $('#photo-lightbox');
+        const $img = $('#lightbox-img');
+        const $caption = $('.lightbox-caption');
+
+        $img.attr('src', imageSrc);
+        $caption.text(caption || '');
+        $lightbox.fadeIn(200);
+        $('body').css('overflow', 'hidden'); // Prevent scrolling
+    }
+
+    function closeLightbox() {
+        $('#photo-lightbox').fadeOut(200);
+        $('body').css('overflow', 'auto'); // Re-enable scrolling
+    }
+
+    // Event Delegation for Gallery Clicks
+    $(document).on('click', '.photo-item', function () {
+        const fullImage = $(this).data('full-image');
+        const caption = $(this).data('caption');
+        openLightbox(fullImage, caption);
+    });
 
     // -------------------------------
     // Utility Functions

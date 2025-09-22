@@ -17,8 +17,7 @@ $(function () {
 
     // Show/Hide Photos Nav Link Based on Time
     function isPhotosPageEnabled() {
-        // const enableTime = new Date('2025-11-09T17:00:00-05:00'); // 5 PM EST
-        const enableTime = new Date('2025-09-09T17:00:00-05:00'); // For testing
+        const enableTime = new Date('2025-11-09T17:00:00-05:00'); // 5 PM EST
         const now = new Date();
         return now >= enableTime;
     }
