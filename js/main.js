@@ -24,8 +24,7 @@ $(function () {
     }
 
     function togglePhotosNavLink() {
-        // Wait for navbar to load, then show/hide photos link
-        const photosLink = document.querySelector('a[href="pics.html"]');
+        const photosLink = document.querySelector('a[href="gallery.html"]');
         if (photosLink) {
             if (isPhotosPageEnabled()) {
                 photosLink.closest('li').style.display = 'block';
