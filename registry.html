@@ -8,6 +8,55 @@
     <title>Gift Registry</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+<style>/* ---------------------------
+   Registry Buttons
+--------------------------- */
+.registry-buttons {
+  text-align: center;
+  margin: 20px 0;
+}
+.registry-buttons p {
+  font-size: 18px;
+  color: #2E8B57; /* Emerald Green */
+  margin-bottom: 15px;
+  font-family: 'Georgia', serif;
+}
+.registry-btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 30px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+.zola-btn {
+  background-color: #006F5F; /* Emerald Green */
+  color: #FFF;
+  border: 2px solid #FFD700; /* Gold */
+}
+.etsy-btn {
+  background-color: #D76A88; /* Pink */
+  color: #FFF;
+  border: 2px solid #FFD700; /* Gold */
+}
+.amazon-btn {
+  background-color: #FF9900; /* Amazon's Yellow */
+  color: #FFF;
+  border: 2px solid #FFD700; /* Gold */
+}
+.bloomingdales-btn {
+  background-color: #3E8E41; /* Deep Green, Bloomingdale's theme */
+  color: #FFF;
+  border: 2px solid #FFD700; /* Gold */
+}
+/* Hover Effects */
+.registry-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}</style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/main.js" defer></script>
 </head>
@@ -24,8 +73,18 @@
         <p>If you're feeling generous here’s where you can find our registry. We’ve curated our wedding wish list across
             multiple registries and with the magic of the internet have it combined at the link below:</p>
 
-        <a href="https://www.zola.com/registry/matthewandmargaretnovember9" target="_blank"
-            class="registry-btn zola-btn">Zola Registry</a>
+       <div class="registry-buttons">
+            <p>We’ve curated our perfect wedding wish list across multiple sites You can shop directly on any of the sites below:</p>
+            <a href="https://www.zola.com/registry/matthewandmargaretnovember9" target="_blank"
+                class="registry-btn zola-btn">Zola
+                Registry</a>
+            <a href="https://www.etsy.com/registry/MTU5NTc1MjA2fDM1NDM1MDk5Mg" target="_blank" class="registry-btn etsy-btn">Etsy
+                Registry</a>
+            <a href="https://www.amazon.com/wedding/share/RitaAndMatthewKnee" target="_blank"
+                class="registry-btn amazon-btn">Amazon Registry</a>
+            <a href="https://www.bloomingdales.com/registry/Margaret-Donin-Matthew-Knee/1150899" target="_blank"
+                class="registry-btn bloomingdales-btn">Bloomingdales Registry</a>
+            </div>
     </section>
 
     <div id="footer"></div>
